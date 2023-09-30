@@ -1,0 +1,11 @@
+{
+    "API_ENDPOINT": "https://api.binance.com/api/v3/ticker/price?symbols=",
+
+    "PAUSE_IN_SECONDS": 15,
+
+    "TICKERS": {
+        "BTCUSDT": 500,
+        "ETHUSDT": 100,
+        "SOLUSDT": 5
+    }
+}
