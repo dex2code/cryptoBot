@@ -1,0 +1,15 @@
+[Unit]
+Description=Crypto TG Bot
+Wants=network.target
+After=network.target
+
+[Service]
+Type=idle
+User=$USER
+WorkingDirectory=$HOME/venv/cryptoBot
+ExecStart=$HOME/venv/cryptoBot/bin/python3 main.py
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
