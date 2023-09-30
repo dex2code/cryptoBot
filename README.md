@@ -1,0 +1,2 @@
+# cryptoBot
+Crypot rates notification
