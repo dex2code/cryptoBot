@@ -5,18 +5,21 @@ import sys, requests, json
 
 
 @logger.catch
-def send_tg_messages(message: str="") -> None:
+def send_tg_messages(message: str="") -> bool:
     for tg_account in app_settings['TG_ACCOUNTS']:
         for tg_chat in tg_account['TG_CHATS']:
             try:
                 tg_answer = requests.post(url=f"https://api.telegram.org/bot{tg_account['TG_TOKEN']}/sendMessage", data={'chat_id': tg_chat, 'text': f"{tg_account['TG_NICK']}{message}"})
             except Exception as E:
                 logger.warning(f"Cannot send TG message to chat id {tg_chat}: ({str(E)})")
+                return False
 
             if tg_answer.status_code != 200:
                 logger.warning(f"Cannot send TG message to chat id {tg_chat}: HTTP {tg_answer.status_code}")
+                return False
             else:
                 logger.info(f"TG message sent to chat id {tg_chat}")
+                return True
 
 
 @logger.catch
